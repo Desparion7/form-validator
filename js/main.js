@@ -42,8 +42,14 @@ const checkLeght = (input, min) => {
 };
 
 const checkPassword = (pass1, pass2) => {
+	const numbers = /[0-9]/;
+	const special = /[!@#$%^&*()]/;
 	if (pass1.value !== pass2.value) {
 		showError(pass2, 'Hasła do siebie nie pasują');
+	} else if (!numbers.test(pass1.value)) {
+		showError(pass1, 'Hasło musi zawierać cyfrę');
+	} else if (!special.test(pass1.value)) {
+		showError(pass1, 'Hasło musi zawierać znak specjalny');
 	}
 };
 const checkMail = (email) => {
